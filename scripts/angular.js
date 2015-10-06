@@ -1,8 +1,5 @@
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
-    /*$scope.translateold = function() {
-    	$scope.translated = $scope.toTranslate.replace(/\b(\w)(\w+)\b/g, '$2$1ay');
-    };*/
     $scope.translated = "";
 
     $scope.translate = function() {
@@ -44,7 +41,6 @@ app.controller('myCtrl', function($scope) {
 
 	    if (firstLetter === firstVowel) {
 	    	var newString = str + "yay"; //If the first letter is a vowel return this;
-	    	//$scope.translated += newString; 
 	    	return newString;
 	    }
 	    else {
@@ -52,37 +48,7 @@ app.controller('myCtrl', function($scope) {
 			var charsBefore = str.slice(0,firstVowelIndex);//chars b4 the idx of the vowel;
 			var charsAfter = str.slice(firstVowelIndex,str.length);//chars after the idx of the first vowel;
 			var newString = charsAfter + charsBefore + "ay";
-			//$scope.translated += newString;
 			return newString;
 	    }
 	};
-
-    /*$scope.translateWord = function() {
-    	$scope.vowels = ["a","e","i","o","u"];
-		$scope.stringVowels = []; //Vowels in The String;
-
-	    $scope.firstLetter = ''; //Stores the first letter in the string
-	    for ($scope.i = 0; i < $scope.toTranslate.length; i++) {
-	      for ($scope.j = 0; j < vowels.length; j++) {
-	        if ($scope.toTranslate[i] === vowels[j]) {
-	            stringVowels.push($scope.toTranslate[i]);
-	        }
-	        else if ($scope.toTranslate.charAt(0) !== vowels[j]) {
-	            firstLetter = $scope.toTranslate.charAt(0);
-	        }
-	      }
-	    }
-	    
-	    $scope.firstVowel = stringVowels[0]; //First Vowel in The String;
-
-	    if (firstLetter === firstVowel) {
-	    	$scope.translated = $scope.toTranslate + "yay"; //If the first letter is a vowel return this;
-	    }
-	    else {
-			$scope.firstVowelIndex = $scope.toTranslate.indexOf(firstVowel);//index of the first vowel
-			$scope.charb4 = $scope.toTranslate.slice(0,firstVowelIndex);//chars b4 the idx of the vowel;
-			$scope.charaf = $scope.toTranslate.slice(firstVowelIndex,$scope.toTranslate.length);//chars after the idx of the first vowel;
-			$scope.translated = charaf + charb4 + "ay";
-	    }
-	};*/
 });
