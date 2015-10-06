@@ -4,7 +4,33 @@ app.controller('myCtrl', function($scope) {
 
     $scope.translate = function() {
     	$scope.translated = "";
-    	var myArray = $scope.toTranslate.split(" ");
+    	var lines = $scope.toTranslate.split('\n');
+    	console.log(lines);
+    	for (var h = 0; h < lines.length; h++) {
+    		if (lines[h] != "") {
+    			//var myArray = $scope.toTranslate.split(" ");
+    			var myArray = lines[h].split(" ");
+		    	for (var i = 0; i < myArray.length; i++){
+		    		var punctuation = "";
+		    		if ((myArray[i].substring(myArray[i].length-1) == '.') || (myArray[i].substring(myArray[i].length-1) == ',') || (myArray[i].substring(myArray[i].length-1) == '!') || (myArray[i].substring(myArray[i].length-1) == '?')) {
+		    			punctuation = myArray[i].substring(myArray[i].length -1);
+		    			myArray[i] = myArray[i].substring(0,myArray[i].length -1);
+		    		}
+		    		if (i > 0) {
+		    			$scope.translated += " ";
+		    		}
+		    		$scope.translated += $scope.translateWord(myArray[i]);
+		    		if (punctuation != "") {
+		    			$scope.translated += punctuation;
+		    			punctuation = "";
+		    		}
+		    	}
+    		}
+    		else {
+    			$scope.translated += '\n';
+    		}
+    	}
+    	/*var myArray = $scope.toTranslate.split(" ");
     	for (var i = 0; i < myArray.length; i++){
     		var punctuation = "";
     		if ((myArray[i].substring(myArray[i].length-1) == '.') || (myArray[i].substring(myArray[i].length-1) == ',') || (myArray[i].substring(myArray[i].length-1) == '!') || (myArray[i].substring(myArray[i].length-1) == '?')) {
@@ -18,7 +44,7 @@ app.controller('myCtrl', function($scope) {
     		if (punctuation != "") {
     			$scope.translated += punctuation;
     		}
-    	}
+    	}*/
     };
 
     $scope.translateWord = function(str) {
