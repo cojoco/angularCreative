@@ -5,13 +5,12 @@ app.controller('myCtrl', function($scope) {
     $scope.translate = function() {
     	$scope.translated = "";
     	var lines = $scope.toTranslate.split('\n');
-    	console.log(lines);
     	for (var h = 0; h < lines.length; h++) {
     		if (lines[h] != "") {
     			var myArray = lines[h].split(" ");
 		    	for (var i = 0; i < myArray.length; i++){
 		    		var punctuation = "";
-		    		if ((myArray[i].substring(myArray[i].length-1) == '.') || (myArray[i].substring(myArray[i].length-1) == ',') || (myArray[i].substring(myArray[i].length-1) == '!') || (myArray[i].substring(myArray[i].length-1) == '?')) {
+		    		if ((myArray[i].substring(myArray[i].length-1) == '.') || (myArray[i].substring(myArray[i].length-1) == ',') || (myArray[i].substring(myArray[i].length-1) == '!') || (myArray[i].substring(myArray[i].length-1) == '?') || (myArray[i].substring(myArray[i].length-1) == ':') || (myArray[i].substring(myArray[i].length-1) == ';')) {
 		    			punctuation = myArray[i].substring(myArray[i].length -1);
 		    			myArray[i] = myArray[i].substring(0,myArray[i].length -1);
 		    		}
