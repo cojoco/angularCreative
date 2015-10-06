@@ -6,12 +6,21 @@ app.controller('myCtrl', function($scope) {
     $scope.translated = "";
 
     $scope.translate = function() {
+    	$scope.translated = "";
     	var myArray = $scope.toTranslate.split(" ");
     	for (var i = 0; i < myArray.length; i++){
+    		var punctuation = "";
+    		if ((myArray[i].substring(myArray[i].length-1) == '.') || (myArray[i].substring(myArray[i].length-1) == ',') || (myArray[i].substring(myArray[i].length-1) == '!') || (myArray[i].substring(myArray[i].length-1) == '?')) {
+    			punctuation = myArray[i].substring(myArray[i].length -1);
+    			myArray[i] = myArray[i].substring(0,myArray[i].length -1);
+    		}
     		if (i > 0) {
     			$scope.translated += " ";
     		}
-    		$scope.translateWord(myArray[i]);
+    		$scope.translated += $scope.translateWord(myArray[i]);
+    		if (punctuation != "") {
+    			$scope.translated += punctuation;
+    		}
     	}
     };
 
@@ -35,14 +44,16 @@ app.controller('myCtrl', function($scope) {
 
 	    if (firstLetter === firstVowel) {
 	    	var newString = str + "yay"; //If the first letter is a vowel return this;
-	    	$scope.translated += newString; 
+	    	//$scope.translated += newString; 
+	    	return newString;
 	    }
 	    else {
 			var firstVowelIndex = str.indexOf(firstVowel);//index of the first vowel
 			var charsBefore = str.slice(0,firstVowelIndex);//chars b4 the idx of the vowel;
 			var charsAfter = str.slice(firstVowelIndex,str.length);//chars after the idx of the first vowel;
 			var newString = charsAfter + charsBefore + "ay";
-			$scope.translated += newString;
+			//$scope.translated += newString;
+			return newString;
 	    }
 	};
 
