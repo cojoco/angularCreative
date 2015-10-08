@@ -7,12 +7,23 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 	</head>
 	<body ng-controller="myCtrl">
-		<div class="row">
-			<textarea class="input-large col-md-4" ng-model="toTranslate" placeholder="Enter a sentence or phrase to be translated"></textarea>
-			<textarea class="input-large col-md-4" ng-model="translated"></textarea>
-		</div>
-		<div class="row">
-			<button type="submit" class="btn btn-success" ng-click="translate()">Translate</button>
+		<div class="container">
+			<div class="row">
+				<h1>Pig Latin Translator</h1>
+			</div>
+			<div class="row">
+				<h3 class="col-md-5">Translate:</h2>
+				<span class="col-md-2"></span>
+				<h3 class="col-md-5">Translated:</h2>
+			</div>
+			<div class="row">
+				<textarea class="input-large col-md-5" ng-model="toTranslate" placeholder="Enter a sentence or phrase to be translated"></textarea>
+				<span class="col-md-2"></span>
+				<textarea class="input-large col-md-5" ng-model="translated"></textarea>
+			</div>
+			<div class="row">
+				<button type="submit" class="btn btn-success" ng-click="translate()">Translate</button>
+			</div>
 		</div>
 		<script src="scripts/angular.js"></script>
 	</body>

@@ -3,7 +3,9 @@
 }
 
 textarea {
-	margin-right: 5px;
-	margin-top: 5px;
 	margin-bottom: 5px;
+}
+
+h1, h3 {
+	text-align: center;
 }
